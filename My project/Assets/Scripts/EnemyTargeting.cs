@@ -13,15 +13,16 @@ public class EnemyTargeting : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed);
         }
     }
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.tag == "Player") {
-            target = other.transform;
-        }
-    }
-
     private void onTriggerExit2D(Collider2D other) {
         if (other.gameObject.tag == "Player") {
             target = null;
+            Debug.Log("Exit");
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.tag == "Player") {
+            target = other.transform;
+            Debug.Log("Enter");
         }
     }
 }
